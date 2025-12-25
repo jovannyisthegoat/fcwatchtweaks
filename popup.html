@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FC Watch Theme Manager</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="popup-container">
+    <!-- Header -->
+    <header class="popup-header">
+      <div class="logo-section">
+        <span class="logo-icon">🎬</span>
+        <h1>Theme Manager</h1>
+      </div>
+      <span class="version-badge">v18.0</span>
+    </header>
+
+    <!-- Main Content -->
+    <main class="popup-main">
+      <!-- Theme List Section -->
+      <section class="themes-section">
+        <div class="section-header">
+          <h2>Card Themes</h2>
+          <span class="theme-count" id="themeCount">0 themes</span>
+        </div>
+        
+        <!-- Theme List -->
+        <div class="theme-list" id="themeList">
+          <div class="empty-state" id="emptyState">
+            <span class="empty-icon">✨</span>
+            <p>No custom themes yet</p>
+            <span class="empty-hint">Add a theme to get started</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Add Theme Button -->
+      <button class="add-theme-btn" id="addThemeBtn">
+        <span class="btn-icon">+</span>
+        <span>Add New Theme</span>
+      </button>
+    </main>
+
+    <!-- Add/Edit Theme Modal -->
+    <div class="modal-overlay" id="modalOverlay">
+      <div class="modal">
+        <div class="modal-header">
+          <h3 id="modalTitle">Add New Theme</h3>
+          <button class="modal-close" id="modalClose">&times;</button>
+        </div>
+        
+        <form class="modal-form" id="themeForm">
+          <div class="form-group">
+            <label for="themeName">Theme Name</label>
+            <input type="text" id="themeName" placeholder="e.g., My Custom Card" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="cardPattern">Card Image URL Pattern</label>
+            <input type="text" id="cardPattern" placeholder="e.g., my_card.png or full URL" required>
+            <span class="input-hint">Enter the card image filename or URL pattern to match</span>
+          </div>
+          
+          <div class="form-group">
+            <label for="effectType">Effect Type</label>
+            <select id="effectType" required>
+              <option value="">Select an effect...</option>
+              <optgroup label="Dream Team">
+                <option value="dream">Gold Dream Team</option>
+                <option value="silver">Silver Dream Team</option>
+                <option value="bronze">Bronze Dream Team</option>
+              </optgroup>
+              <optgroup label="Special">
+                <option value="fw-icon">FW Icon (Red/Gold)</option>
+                <option value="icon-26">FC 26 Icon (White/Gold)</option>
+                <option value="halloween">Halloween</option>
+                <option value="futmas">Futmas (Christmas)</option>
+                <option value="vintage">Vintage Film</option>
+              </optgroup>
+              <optgroup label="Basic">
+                <option value="standard">Standard</option>
+              </optgroup>
+            </select>
+          </div>
+
+          <div class="form-group checkbox-group">
+            <label class="checkbox-label">
+              <input type="checkbox" id="themeEnabled" checked>
+              <span class="checkmark"></span>
+              <span>Enable this theme</span>
+            </label>
+          </div>
+
+          <input type="hidden" id="themeId" value="">
+          
+          <div class="modal-actions">
+            <button type="button" class="btn btn-secondary" id="cancelBtn">Cancel</button>
+            <button type="submit" class="btn btn-primary">Save Theme</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+  <script src="popup.js"></script>
+</body>
+</html>
